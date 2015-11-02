@@ -1,6 +1,7 @@
 package br.lp3.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  *
@@ -13,6 +14,7 @@ public class Noticia implements Serializable {
     private String url;
     private String author;
     private String content;
+    //Salva a data da publicação no formato timestamp
     private long timestamp;
 
     public Noticia(long gid, String title, String url, String author, String content, long timestamp) {
@@ -73,6 +75,11 @@ public class Noticia implements Serializable {
 
     public void setTimestamp(long timestamp) {
         this.timestamp = timestamp;
+    }
+    
+    //Retorna o timestamp * 1000 para evitar um bug na conversão
+    public Date getDate() {
+        return new Date(timestamp * 1000);
     }
 
     @Override
